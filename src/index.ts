@@ -9,7 +9,11 @@ type Task = {
 const list = document.querySelector<HTMLUListElement>("#list");
 const form = document.getElementById("new-task-form") as HTMLFormElement | null;
 const input = document.querySelector<HTMLInputElement>("#new-task-title");
-const tasks: Task[] = loadTasks();
+const deleteButton = document.getElementById(
+  "delete-checked"
+) as HTMLButtonElement;
+
+var tasks: Task[] = loadTasks();
 tasks.forEach(addListItem);
 
 form?.addEventListener("submit", (e) => {
@@ -27,6 +31,12 @@ form?.addEventListener("submit", (e) => {
   saveTasks();
   addListItem(newTask);
   input.value = "";
+});
+
+deleteButton?.addEventListener("click", () => {
+  tasks = tasks.filter((task) => !task.completed);
+  saveTasks();
+  refreshList();
 });
 
 function addListItem(task: Task) {
@@ -52,4 +62,14 @@ function loadTasks(): Task[] {
   const taskJSON = localStorage.getItem("TASKS");
   if (taskJSON == null) return [];
   return JSON.parse(taskJSON);
+}
+
+function refreshList() {
+  // Clear the current list
+  if (list !== null) {
+    list.innerHTML = "";
+  }
+
+  // Re-add all tasks to the list
+  tasks.forEach(addListItem);
 }
