@@ -12,7 +12,8 @@ const input = document.querySelector<HTMLInputElement>("#new-task-title");
 const deleteButton = document.getElementById(
   "delete-checked"
 ) as HTMLButtonElement;
-
+const selectAll = document.getElementById("check-all") as HTMLButtonElement;
+var checkState = false;
 var tasks: Task[] = loadTasks();
 tasks.forEach(addListItem);
 
@@ -33,8 +34,16 @@ form?.addEventListener("submit", (e) => {
   input.value = "";
 });
 
-deleteButton?.addEventListener("click", () => {
+deleteButton.addEventListener("click", () => {
   tasks = tasks.filter((task) => !task.completed);
+  saveTasks();
+  refreshList();
+});
+
+selectAll.addEventListener("click", () => {
+  if (!checkState) tasks.forEach((task) => (task.completed = true));
+  else tasks.forEach((task) => (task.completed = false));
+  checkState = !checkState;
   saveTasks();
   refreshList();
 });
