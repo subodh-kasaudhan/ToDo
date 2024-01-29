@@ -35,12 +35,18 @@ form?.addEventListener("submit", (e) => {
 });
 
 deleteButton.addEventListener("click", () => {
+  if (input?.value != null) {
+    input.value = "";
+  }
   tasks = tasks.filter((task) => !task.completed);
   saveTasks();
   refreshList();
 });
 
 selectAll.addEventListener("click", () => {
+  if (input?.value != null) {
+    input.value = "";
+  }
   if (!checkState) tasks.forEach((task) => (task.completed = true));
   else tasks.forEach((task) => (task.completed = false));
   checkState = !checkState;
@@ -55,9 +61,15 @@ function addListItem(task: Task) {
   checkbox.addEventListener("change", () => {
     task.completed = checkbox.checked;
     saveTasks();
+    refreshList();
   });
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
+
+  if (task.completed) {
+    label.classList.add("completed-task");
+  }
+
   label.append(checkbox, task.title);
   item.append(label);
   list?.append(item);
@@ -74,11 +86,8 @@ function loadTasks(): Task[] {
 }
 
 function refreshList() {
-  // Clear the current list
   if (list !== null) {
     list.innerHTML = "";
   }
-
-  // Re-add all tasks to the list
   tasks.forEach(addListItem);
 }

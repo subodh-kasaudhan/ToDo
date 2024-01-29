@@ -1,0 +1,8 @@
+.completed-task {
+  text-decoration: line-through;
+  color: #808080; /* Crossed-out text color, you can adjust it */
+}
+#list {
+  list-style: none;
+  padding: 0;
+}
