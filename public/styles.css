@@ -4,6 +4,8 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 h1 {
@@ -13,7 +15,7 @@ h1 {
 }
 
 form {
-  /* display: flex; */
+  /* display:; */
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -21,36 +23,73 @@ form {
 
 #new-task-title {
   padding: 10px;
+  margin-left: 10px;
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   flex-grow: 1;
+  width: 300px;
 }
 
 button {
   padding: 10px;
-  border: none;
+  border: 2px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-button:hover {
+/* button:hover {
   background-color: #ddd;
-}
+} */
 
-button:active {
+/* button:active {
   background-color: #bbb;
-}
+} */
 
 #delete-checked {
-  background-color: #e74c3c;
+  background-color: #e93623;
   color: #fff;
+}
+
+#delete-checked:hover {
+  background-color: #981607;
+  color: #fff;
+}
+
+#delete-checked:active {
+  background-color: #ddd;
+  color: #000;
 }
 
 #check-all {
-  background-color: #3498db;
+  background-color: #158ad7;
   color: #fff;
+}
+
+#check-all:hover {
+  background-color: #0662a0;
+  color: #fff;
+}
+
+#check-all:active {
+  background-color: #ddd;
+  color: #000;
+}
+
+#add {
+  background-color: #06a806;
+  color: #fff;
+}
+
+#add:hover {
+  background-color: #035d03;
+  color: #fff;
+}
+
+#add:active {
+  background-color: #ddd;
+  color: #000;
 }
 
 ul {
@@ -77,4 +116,27 @@ input[type="checkbox"] {
 #list {
   list-style: none;
   padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+  /* Adjustments for smaller screens */
+
+  form {
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    align-items: stretch;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #new-task-title {
+    width: 88%;
+    /* margin-right: 0; */
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%; /* Make buttons full-width */
+    margin-bottom: 10px;
+  }
 }
