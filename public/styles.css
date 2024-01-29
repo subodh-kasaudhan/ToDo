@@ -1,7 +1,79 @@
+/* styles.css */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#new-task-title {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button:active {
+  background-color: #bbb;
+}
+
+#delete-checked {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+#check-all {
+  background-color: #3498db;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+  font-size: 20px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
 .completed-task {
   text-decoration: line-through;
-  color: #808080; /* Crossed-out text color, you can adjust it */
+  color: #808080;
 }
+
 #list {
   list-style: none;
   padding: 0;
